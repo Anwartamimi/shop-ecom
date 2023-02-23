@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+
+<div class="container ">
+    <div class="row ">
+        <h2>All Available Products</h2>
+
+        <div class="clearfix ">
+            {% for product in all_products %}
+            <div class="img-container">
+            <a href="{% url 'product_detail' product.pk product.slug %}">{{ product.name }}</a>
+            <p>{{ product.price }}</p>
+            <a href="{%url 'product_detail' product.pk product.slug %}"><img style="object-fit: cover;" class="card-img mt-2" width="268" height="200" src="{{ product.image.url }}">
+            </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
